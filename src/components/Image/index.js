@@ -11,7 +11,7 @@ const Image = ({ imageObject }) => {
         {imageObject.description ? (
           <>
             <div className="image-desc">
-              <strong>{imageObject.description}</strong>{" "}
+              <strong>{imageObject.description.substring(0, 35)}</strong>
             </div>
             {imageObject.user.name ? (
               <div className={"image-author"}>by {imageObject.user.name}</div>

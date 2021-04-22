@@ -19,6 +19,12 @@ body {
 .btn-container {
   margin: auto;
   text-align: center;
-  padding-bottom: 70px;
-  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.current-page{
+  font-size: 18px;
 }
