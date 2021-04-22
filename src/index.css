@@ -15,3 +15,10 @@ body {
   padding: 30px;
   text-align: center;
 }
+
+.btn-container {
+  margin: auto;
+  text-align: center;
+  padding-bottom: 70px;
+  padding-top: 15px;
+}
