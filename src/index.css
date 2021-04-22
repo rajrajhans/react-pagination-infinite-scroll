@@ -6,7 +6,7 @@ body {
   background: #eee;
 }
 
-.App-title{
+.App-title {
   font-family: 'Orelega One', cursive;
   font-size: 55px;
 }
@@ -25,6 +25,21 @@ body {
   align-items: center;
 }
 
-.current-page{
+.current-page {
   font-size: 18px;
+}
+
+.error {
+  padding: 40px;
+  font-size: 20px;
+  border: 1px solid;
+  margin: 100px;
+  text-align: center;
+}
+
+.error-title {
+  font-family: 'Orelega One', cursive;
+  font-size: 35px;
+  color: #d42424;
+  margin-bottom: 20px;
 }

@@ -12,6 +12,7 @@ function App() {
   const [imageObjects, setImageObjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchImages();
@@ -25,6 +26,12 @@ function App() {
         // console.log(data);
         setImageObjects([...imageObjects, ...data]);
         setIsLoading(false);
+      })
+      .catch((e) => {
+        alert(
+          "Loading image from Unsplash failed. This is likely due to exceeding free API limit. Please clone the repo and try locally using your own API keys or come back in 60 minutes."
+        );
+        setError(e);
       });
   };
 
@@ -38,7 +45,9 @@ function App() {
   };
 
   const handlePrevPageCall = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   const getPaginatedData = () => {
@@ -59,27 +68,50 @@ function App() {
         </div>
       </header>
       <div className="container">
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <>
-            {imageObjects.length ? (
-              <>
-                <PaginationBar
-                  handlePrevPageCall={handlePrevPageCall}
-                  currentPage={currentPage}
-                  handleNextPageCall={handleNextPageCall}
-                />
-                <ImageGrid imageObjects={getPaginatedData()} />
-                <PaginationBar
-                  handlePrevPageCall={handlePrevPageCall}
-                  currentPage={currentPage}
-                  handleNextPageCall={handleNextPageCall}
-                />
-              </>
-            ) : null}
-          </>
-        )}
+        <>
+          {error ? (
+            <div className={"error"}>
+              <div className="error-title">API Error</div>
+              Looks like there's an error fetching images from the Unsplash API.{" "}
+              This is likely due to exceeding their free API limit. <br />
+              Please{" "}
+              <a
+                href={
+                  "https://github.com/rajrajhans/react-infinite-scroll-demo"
+                }
+              >
+                clone the repo
+              </a>{" "}
+              and try locally using your own API keys or come back in 60
+              minutes.
+            </div>
+          ) : (
+            <>
+              {" "}
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <>
+                  {imageObjects.length ? (
+                    <>
+                      <PaginationBar
+                        handlePrevPageCall={handlePrevPageCall}
+                        currentPage={currentPage}
+                        handleNextPageCall={handleNextPageCall}
+                      />
+                      <ImageGrid imageObjects={getPaginatedData()} />
+                      <PaginationBar
+                        handlePrevPageCall={handlePrevPageCall}
+                        currentPage={currentPage}
+                        handleNextPageCall={handleNextPageCall}
+                      />
+                    </>
+                  ) : null}
+                </>
+              )}
+            </>
+          )}
+        </>
       </div>
     </div>
   );
