@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import ImageGrid from "./components/ImageGrid/";
 import Loading from "./components/Loading/";
-import Button from "./components/Button";
 
 const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
 const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
