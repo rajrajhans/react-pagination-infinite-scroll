@@ -1,3 +1,5 @@
+// Implementation of Infinite Scroll using DOM Scroll Event Listeners
+
 import React, { useState, useEffect } from "react";
 import ImageGrid from "./components/ImageGrid/";
 import Loading from "./components/Loading/";
