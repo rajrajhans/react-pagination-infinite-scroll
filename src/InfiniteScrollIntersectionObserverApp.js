@@ -1,25 +1,50 @@
 // Implementation of Infinite Scroll using DOM Scroll Event Listeners
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ImageGrid from "./components/ImageGrid/";
 import Loading from "./components/Loading/";
-import Button from "./components/Button";
 
 const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
 const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
 // const unsplashEndpoint = `http://127.0.0.1:8080/unsplash.json`;
 
-function InfiniteScrollApp() {
+function InfiniteScrollIntersectionObserverApp() {
   const [imageObjects, setImageObjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [error, setError] = useState(null);
+  const [targetElement, setTargetElement] = useState(null);
+  const prevY = useRef(0); // storing the last intersection y position
+
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1.0,
+  };
+
+  const handleObserver = (entities, observer) => {
+    const y = entities[0].boundingClientRect.y;
+
+    if (prevY.current > y) {
+      fetchImages();
+    }
+
+    prevY.current = y;
+  };
+
+  const observer = useRef(new IntersectionObserver(handleObserver, options));
 
   useEffect(() => {
     fetchImages();
-    window.addEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (targetElement) {
+      observer.current.observe(targetElement);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetElement]);
 
   const fetchImages = () => {
     setIsLoading(true);
@@ -37,16 +62,6 @@ function InfiniteScrollApp() {
         );
         setError(e);
       });
-  };
-
-  const handleScroll = () => {
-    if (
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.offsetHeight
-    ) {
-      console.log("req triggered");
-      fetchImages();
-    }
   };
 
   return (
@@ -73,13 +88,14 @@ function InfiniteScrollApp() {
                   ) : null}
                 </>
               )}
-              {isLoading && (
-                <div className={"loading-new-images-container"}>
-                  <div className="loading-new-images">
-                    Loading New Images ...
-                  </div>
-                </div>
-              )}
+
+              <div
+                className={"loading-new-images-container"}
+                style={isLoading ? { display: "none" } : null}
+                ref={setTargetElement}
+              >
+                <div className="loading-new-images">Loading New Images ...</div>
+              </div>
             </>
           )}
         </>
@@ -101,4 +117,4 @@ const ErrorMessage = () => (
   </div>
 );
 
-export default InfiniteScrollApp;
+export default InfiniteScrollIntersectionObserverApp;
