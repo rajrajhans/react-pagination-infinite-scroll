@@ -4,8 +4,8 @@ import "./index.css";
 import InfiniteScrollApp from "./InfiniteScrollApp";
 import PaginationApp from "./PaginationApp";
 
-// const AppComponent = InfiniteScrollApp;
-const AppComponent = PaginationApp;
+const AppComponent = InfiniteScrollApp;
+// const AppComponent = PaginationApp;
 
 ReactDOM.render(
   <React.StrictMode>
