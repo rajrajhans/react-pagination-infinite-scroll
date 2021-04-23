@@ -39,7 +39,7 @@ function App() {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + window.scrollY >=
+      Math.ceil(window.innerHeight + window.scrollY) >=
       document.documentElement.offsetHeight
     ) {
       console.log("req triggered");
