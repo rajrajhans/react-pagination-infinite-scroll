@@ -6,8 +6,8 @@ import Loading from "./components/Loading/";
 import Button from "./components/Button";
 
 const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
-// const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
-const unsplashEndpoint = `http://127.0.0.1:8080/unsplash.json`;
+const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
+// const unsplashEndpoint = `http://127.0.0.1:8080/unsplash.json`;
 
 function InfiniteScrollApp() {
   const [imageObjects, setImageObjects] = useState([]);
@@ -87,20 +87,6 @@ function InfiniteScrollApp() {
     </div>
   );
 }
-
-// used for pagination
-// eslint-disable-next-line
-const PaginationBar = ({
-  handlePrevPageCall,
-  currentPage,
-  handleNextPageCall,
-}) => (
-  <div className="btn-container">
-    <Button onClick={handlePrevPageCall}>Previous Page</Button>
-    <div className={"current-page"}>Page {currentPage}</div>
-    <Button onClick={handleNextPageCall}>Next Page</Button>
-  </div>
-);
 
 const ErrorMessage = () => (
   <div className={"error"}>
