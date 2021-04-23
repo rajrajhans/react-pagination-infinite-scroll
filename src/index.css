@@ -43,3 +43,12 @@ body {
   color: #d42424;
   margin-bottom: 20px;
 }
+
+.loading-new-images-container {
+  padding: 70px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Orelega One', cursive;
+  font-size: 30px;
+  color: #bfaefc;
+}
