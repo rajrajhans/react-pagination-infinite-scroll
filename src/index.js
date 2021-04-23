@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import InfiniteScrollApp from "./InfiniteScrollApp";
+
+const AppComponent = InfiniteScrollApp;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppComponent />
   </React.StrictMode>,
   document.getElementById("root")
 );

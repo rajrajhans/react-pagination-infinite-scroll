@@ -4,10 +4,10 @@ import Loading from "./components/Loading/";
 import Button from "./components/Button";
 
 const unsplashApiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
-const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
-// const unsplashEndpoint = `http://127.0.0.1:8080/unsplash.json`;
+// const unsplashEndpoint = `https://api.unsplash.com/photos/random?count=15&orientation=portrait&client_id=${unsplashApiKey}`;
+const unsplashEndpoint = `http://127.0.0.1:8080/unsplash.json`;
 
-function App() {
+function InfiniteScrollApp() {
   const [imageObjects, setImageObjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -113,4 +113,4 @@ const ErrorMessage = () => (
   </div>
 );
 
-export default App;
+export default InfiniteScrollApp;
