@@ -27,7 +27,7 @@ There are two ways we can implement Infinite Scroll:
 1. **Using Scroll Events Listener**: We will listen to DOM Scroll Events emitted and then see if we have reached bottom. If yes, we'll trigger the request. Pretty straight forward. Using scroll events works, but it might cause performance issues in your app because the scroll events listener code runs on the main thread.
 2. **Using Intersection Observer**: This one is a relatively new approach. Intersection Observer API lets our code register a callback function that is executed whenever an element they wish to monitor enters or exits another element. This way, our webapp no longer needs to do anything on the main thread to watch for this kind of element intersection, which makes it more performant.
 
-You can find the implementations of Infinite scroll using both Scroll Events Listener and Intersection Observer at [`src/ InfiniteScrollApp.js`](src/InfiniteScrollApp.js) and [`src/ InfiniteScrollIntersectionObserverApp.js`](src/InfiniteScrollIntersectionObserverApp.js) respectively.
+You can find the implementations of Infinite scroll using both Scroll Events Listener and Intersection Observer at [`src/ InfiniteScrollApp.js`](src/InfiniteScrollApp.js) and [`src/InfiniteScrollIntersectionObserverApp.js`](src/InfiniteScrollIntersectionObserverApp.js) respectively.
 
 Visit [this link](https://react-infinite-scroll-demo-9o91prgax-rajrajhans.vercel.app/) for a live demo of infinite scroll.
 
