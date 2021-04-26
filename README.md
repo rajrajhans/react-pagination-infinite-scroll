@@ -1,6 +1,6 @@
 # Pagination & Infinite Scroll in React
 
-[Link to associated blog post](https://rajrajhans.com/2021/04/infinite-scroll-in-react/)
+[Link to associated blog post](https://rajrajhans.com/2021/04/pagination-and-infinite-scroll-in-react//)
 
 This is a demo React app that simply calls the Unsplash API to get random images, 15 at a time, and displays them.
 
@@ -31,7 +31,7 @@ You can find the implementations of Infinite scroll using both Scroll Events Lis
 
 Visit [this link](https://react-infinite-scroll-demo-9o91prgax-rajrajhans.vercel.app/) for a live demo of infinite scroll.
 
-Do check out the [blog post](https://rajrajhans.com/2021/04/infinite-scroll-in-react/) for more details.
+Do check out the [blog post](https://rajrajhans.com/2021/04/pagination-and-infinite-scroll-in-react/) for more details.
 
 **Note**: To run the project locally, you need to create a free account and get an API key from [Unsplash](https://unsplash.com/developers) and enter it in the `.env` file. If you want to check how the JSON response from Unsplash looks like, you can find a sample at `src/sample_api_response.json`.
 
